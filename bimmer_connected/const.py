@@ -1,5 +1,7 @@
 """URLs for different services and error code mapping."""
 
+import random
+import string
 from enum import Enum
 
 
@@ -56,7 +58,11 @@ USER_AGENTS = {
     Regions.REST_OF_WORLD: "Dart/3.3 (dart:io)",
     Regions.CHINA: "Dart/3.3 (dart:io)",
 }
-X_USER_AGENT = "android(xxxbmw);{brand};{app_version};{region}"
+X_USER_AGENT = (
+    "android("
+     + "".join(random.choices(string.ascii_lowercase, k=20))
+     + ");{brand};{app_version};{region}"
+)
 
 
 AUTH_CHINA_PUBLIC_KEY_URL = "/eadrax-coas/v1/cop/publickey"
